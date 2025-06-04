@@ -1,0 +1,16 @@
+# Terraform state
+*.tfstate*
+*.tfplan
+
+# Sensitive variable files
+*.tfvars.json
+
+# Terraform working dir
+.terraform/
+
+# Optional / debugging
+crash.log
+
+# Optional: ignore .terraform.lock.hcl only if you're not locking provider versions
+# (Most teams **include** this file)
+# .terraform.lock.hcl
