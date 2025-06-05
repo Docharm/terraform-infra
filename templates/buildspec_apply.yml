@@ -25,6 +25,7 @@ phases:
     commands:
       - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
       - "echo ## TERRAFORM APPLY : Starting with the Terraform Apply"
+      - cd env/$ENVIRONMENT
       - "terraform apply -input=false tfapply"
 
 artifacts:

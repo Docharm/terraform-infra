@@ -34,7 +34,7 @@ phases:
     commands:
       - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
       - "echo ## TERRAFORM INIT : Initialize the Terraform Workspace"
-      - cd env/$TF_ENV
+      - cd env/$ENVIRONMENT
       - "terraform init"
       - "echo ## VALIDATION : Starting ..."
       - "mkdir -p ${CODEBUILD_SRC_DIR}/reports"
