@@ -7,6 +7,7 @@ terraform {
       version = ">= 4.20.1"
     }
   }
+
   backend "s3" {
     bucket        = "tf-backend-state-dklee"
     key           = "env/dev/terraform.tfstate"
