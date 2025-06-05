@@ -45,10 +45,10 @@ resource "aws_iam_role_policy" "allow_terraform_full_access" {
           "iam:TagRole"
         ]
         Resource = [
-          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/cloocus-tf-project-codepipeline-role",
-          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/cloocus-tf-project-replication-role",
-          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/cloocus-tf-project-replication-policy",
-          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/cloocus-tf-project-codepipeline-policy"
+          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.project_name}-codepipeline-role",
+          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.project_name}-replication-role",
+          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/${var.project_name}-replication-policy",
+          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/${var.project_name}-codepipeline-policy"
         ]
       },
       {
@@ -71,8 +71,7 @@ resource "aws_iam_role_policy" "allow_terraform_full_access" {
           "s3:PutBucketTagging"
         ]
         Resource = [
-          "arn:aws:s3:::tf-backend-state-dklee"
-          #"arn:aws:s3:::${var.project_name}${var.suffix}"
+          "arn:aws:s3:::${var.project_name}*"
         ]
       }
     ]

@@ -42,3 +42,8 @@ variable "aws_region" {
   description = "AWS region where the resources will be created"
   type        = string
 }
+
+variable "s3_tfstate_bucket" {
+  description = "S3 bucket name to be used for storing the Terraform state files"
+  type        = string
+}

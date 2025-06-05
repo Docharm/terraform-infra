@@ -80,3 +80,8 @@ variable "repo_approvers_role" {
   description = "IAM role name used for CodePipeline approval"
   type        = string
 }
+
+variable "s3_tfstate_bucket_name" {
+  description = "S3 bucket name to be used for storing the Terraform state files"
+  type        = string
+}

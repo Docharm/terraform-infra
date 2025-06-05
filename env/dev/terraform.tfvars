@@ -20,3 +20,5 @@ stage_input = [
 ]
 
 build_projects = ["validate", "plan", "apply", "destroy"]
+
+s3_tfstate_bucket_name = "tf-backend-state-dklee"

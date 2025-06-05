@@ -127,7 +127,9 @@ module "codepipeline_terraform" {
   codepipeline_role_arn = module.codepipeline_iam_role.role_arn
   stages                = var.stage_input
   kms_key_arn           = module.codepipeline_kms.arn
-  aws_region            = local.region 
+  aws_region            = local.region
+  s3_tfstate_bucket     = var.s3_tfstate_bucket_name
+
 
   tags = {
     Project     = var.project_name
