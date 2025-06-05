@@ -33,7 +33,7 @@ module "s3_artifacts_bucket" {
 
 # Module for Infrastructure Source code repository
 module "codecommit_infrastructure_source_repo" {
-  source = "../../modules/code_pipeline/codecommit"
+  source = "../../modules/developer_tool/codecommit"
 
   create_new_repo          = var.create_new_repo
   source_repository_name   = var.source_repo_name
@@ -55,7 +55,7 @@ module "codebuild_terraform" {
   depends_on = [
     module.codecommit_infrastructure_source_repo
   ]
-  source = "../../modules/code_pipeline/codebuild"
+  source = "../../modules/developer_tool/codebuild"
 
   project_name                        = var.project_name
   role_arn                            = module.codepipeline_iam_role.role_arn
@@ -114,7 +114,7 @@ module "codepipeline_terraform" {
     module.codebuild_terraform,
     module.s3_artifacts_bucket
   ]
-  source = "../../modules/code_pipeline/codepipeline"
+  source = "../../modules/developer_tool/codepipeline"
 
   project_name          = var.project_name
   source_repo_name      = var.source_repo_name
