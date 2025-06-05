@@ -19,7 +19,7 @@ phases:
     commands:
       - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
       - "echo ## TERRAFORM PLAN : Generate the Terraform Plan"
-      - cd env/$ENVIRONMENT
+      - "cd env/$ENVIRONMENT"
       - "terraform plan -out=tfapply"
 artifacts:
   files:
