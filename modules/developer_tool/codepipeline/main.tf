@@ -48,7 +48,7 @@ resource "aws_codepipeline" "terraform_pipeline" {
         output_artifacts = [stage.value["output_artifacts"]]
         version          = "1"
         run_order        = index(var.stages, stage.value) + 2
-        role_arn         = var.codepipeline_action_role_arn 
+        role_arn         = var.codepipeline_role_arn  
         configuration = {
           ProjectName = stage.value["provider"] == "CodeBuild" ? "${var.project_name}-${stage.value["name"]}" : null
         }

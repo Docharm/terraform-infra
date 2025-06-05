@@ -37,8 +37,3 @@ variable "stages" {
   description = "List of Map containing information about the stages of the CodePipeline"
   type        = list(map(any))
 }
-
-variable "codepipeline_action_role_arn" {
-  description = "ARN of the IAM role to be used for the actions in the CodePipeline"
-  type        = string
-}
