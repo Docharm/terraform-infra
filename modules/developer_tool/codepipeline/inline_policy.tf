@@ -20,8 +20,8 @@ resource "aws_iam_role_policy" "allow_terraform_full_access" {
           "s3:DeleteObject"
         ]
         Resource = [
-          "arn:aws:s3:::${ver.s3_tfstate_bucket}",
-          "arn:aws:s3:::${ver.s3_tfstate_bucket}/*"
+          "arn:aws:s3:::${var.s3_tfstate_bucket}",
+          "arn:aws:s3:::${var.s3_tfstate_bucket}/*"
         ]
       },
       {
