@@ -34,7 +34,6 @@ module "s3_artifacts_bucket" {
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
 
@@ -55,7 +54,6 @@ module "codecommit_infrastructure_source_repo" {
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
 
@@ -82,7 +80,6 @@ module "codebuild_terraform" {
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
 
@@ -95,7 +92,6 @@ module "codepipeline_kms" {
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
 
@@ -113,7 +109,6 @@ module "codepipeline_iam_role" {
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
 
@@ -132,12 +127,12 @@ module "codepipeline_terraform" {
   codepipeline_role_arn = module.codepipeline_iam_role.role_arn
   stages                = var.stage_input
   kms_key_arn           = module.codepipeline_kms.arn
+  aws_region            = local.region 
 
   tags = {
     Project     = var.project_name
     Environment = var.environment
     Account_ID  = local.account_id
     Region      = local.region
-    Owner       = local.owner
   }
 }
