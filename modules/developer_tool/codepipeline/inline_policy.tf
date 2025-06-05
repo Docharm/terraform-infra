@@ -61,7 +61,7 @@ resource "aws_iam_role_policy" "allow_terraform_full_access" {
           "codepipeline:ListTagsForResource"
         ]
         Resource = [
-          "arn:aws:codepipeline:${var.aws_region}:${data.aws_caller_identity.current.account_id}:${var.project_name}-pipeline"
+          "arn:aws:codepipeline:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:${var.project_name}-pipeline"
         ]
       },
       {
