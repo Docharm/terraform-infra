@@ -137,3 +137,21 @@ module "codepipeline_terraform" {
     Region      = local.region
   }
 }
+# network 구성
+module "vpc" {
+  source = "../../modules/network/vpc"
+
+  name                 = "doyeon-vpc"
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+}
+
+module "subnet" {
+  source               = "../../modules/network/subnet"
+  vpc_id               = module.vpc.vpc_id
+  public_subnet_cidr   = "10.0.1.0/24"
+  private_subnet_cidr  = "10.0.2.0/24"
+  public_az            = "ap-northeast-2a"
+  private_az           = "ap-northeast-2b"
+}
