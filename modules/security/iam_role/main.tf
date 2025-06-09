@@ -110,7 +110,6 @@ resource "aws_iam_policy" "codepipeline_policy" {
       ],
       "Resource": "arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:log-group:*"
     },
-    # EC2 관련 조회 권한 추가 (for VPC 모듈 사용)
     { 
       "Effect": "Allow",
       "Action": [
