@@ -52,3 +52,15 @@ output "s3_bucket_name" {
   value       = module.s3_artifacts_bucket.bucket
   description = "The Name of the S3 Bucket"
 }
+
+output "vpc_id" {
+  value       = module.vpc.vpc_id
+}
+
+output "public_subnet_id" {
+  value       = module.subnet.public_subnet_id
+}
+
+output "private_subnet_id" {
+  value       = module.subnet.private_subnet_id
+}
