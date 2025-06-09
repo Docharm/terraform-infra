@@ -120,3 +120,24 @@ resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
   role       = aws_iam_role.codepipeline_role[0].name
   policy_arn = aws_iam_policy.codepipeline_policy[0].arn
 }
+
+# 도연iamrole 추가 
+resource "aws_iam_role_policy" "codecommit_inline_update_default_branch" {
+  count = var.create_new_role ? 1 : 0
+
+  name = "AllowUpdateDefaultBranch"
+  role = aws_iam_role.codepipeline_role[0].name
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "codecommit:UpdateDefaultBranch"
+        ],
+        Resource = "arn:aws:codecommit:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:${var.source_repository_name}"
+      }
+    ]
+  })
+}
