@@ -44,7 +44,7 @@ phases:
 artifacts:
   files:
     - '**/*'
-reports:
+#reports:
 #  checkov-reports:
 #    files:
 #      - "./reports/checkov.xml"
