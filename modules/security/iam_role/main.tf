@@ -113,11 +113,14 @@ resource "aws_iam_policy" "codepipeline_policy" {
     { 
       "Effect": "Allow",
       "Action": [
-        "ec2:DescribeVpcs",
-        "ec2:DescribeSubnets",
-        "ec2:DescribeRouteTables",
-        "ec2:DescribeInternetGateways",
-        "ec2:DescribeVpcAttribute" 
+          "ec2:DescribeVpcs",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInternetGateways",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeNatGateways",
+          "ec2:DescribeAvailabilityZones",
+          "ec2:DescribeVpcAttribute"
       ],
       "Resource": "*"
     }
