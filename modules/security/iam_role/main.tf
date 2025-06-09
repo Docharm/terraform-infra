@@ -116,7 +116,7 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "ec2:DescribeVpcs",
         "ec2:DescribeSubnets",
         "ec2:DescribeRouteTables",
-        "ec2:DescribeInternetGateways"
+        "ec2:DescribeInternetGateways",
         "ec2:DescribeVpcAttribute" 
       ],
       "Resource": "*"
