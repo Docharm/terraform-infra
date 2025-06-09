@@ -4,7 +4,7 @@ env:
   variables:
     CODE_SRC_DIR: "."
     TF_VERSION: "1.12.1"
-    ENVIRONMENT: "dev"
+    ENVIRONMENT: "doyeon"
 
 phases:
   install:

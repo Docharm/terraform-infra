@@ -37,6 +37,8 @@ variable "builder_image" {
 variable "builder_type" {
   description = "Type of build environment to use for related builds"
   type        = string
+  default     = "LINUX_CONTAINER"
+
 }
 
 variable "builder_image_pull_credentials_type" {
