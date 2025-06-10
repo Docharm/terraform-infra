@@ -18,8 +18,8 @@ phases:
       - echo "## TERRAFORM VALIDATE START "
       - cd env/$ENVIRONMENT
       - terraform init -backend=false
-      - terraform validate
-      - terraform fmt -check
+      - terraform validate || (echo "[ERROR] terraform validate failed" && exit 1)
+      - terraform fmt -check || (echo "[ERROR] terraform fmt failed" && exit 1)
 
 
 

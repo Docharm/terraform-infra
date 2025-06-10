@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "replication_s3_role_attach" {
 
 # S3 Replication IAM Policy
 resource "aws_iam_policy" "replication_s3_policy" {
-  name   = "${var.project_name}-replication-policy"
+  name = "${var.project_name}-replication-policy"
 
   policy = <<POLICY
 {

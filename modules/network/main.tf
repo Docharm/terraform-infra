@@ -70,21 +70,21 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # SSH
+    cidr_blocks = ["0.0.0.0/0"] # SSH
   }
 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # HTTP
+    cidr_blocks = ["0.0.0.0/0"] # HTTP
   }
 
   ingress {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]  # ping
+    cidr_blocks = ["0.0.0.0/0"] # ping
   }
 
   egress {
@@ -112,7 +112,7 @@ resource "aws_instance" "web" {
     Name = "${var.project_name}-web"
   }
 
-    user_data = <<-EOF
+  user_data = <<-EOF
               #!/bin/bash
               apt update -y
               apt install -y nginx
@@ -134,8 +134,8 @@ resource "aws_instance" "web" {
 
 # 최신 우분투 AMI 가져오기
 data "aws_ami" "ubuntu" {
-  most_recent = true # 가장 최근
-  owners      = ["099720109477"]  # Canonical 공식 계정
+  most_recent = true             # 가장 최근
+  owners      = ["099720109477"] # Canonical 공식 계정
 
   filter {
     name   = "name"
@@ -147,5 +147,5 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  
+
 }

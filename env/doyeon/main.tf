@@ -3,17 +3,17 @@ terraform {
 
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = ">= 4.20.1"
     }
   }
 
   backend "s3" {
-    bucket        = "tf-backend-state-doyeon"
-    key           = "env/doyeon/terraform.tfstate"
-    region        = "ap-northeast-2"
-    use_lockfile  = true
-    encrypt       = true
+    bucket       = "tf-backend-state-doyeon"
+    key          = "env/doyeon/terraform.tfstate"
+    region       = "ap-northeast-2"
+    use_lockfile = true
+    encrypt      = true
   }
 }
 
@@ -140,14 +140,14 @@ module "codepipeline_terraform" {
 
 # network 구성
 module "network" {
-  source = "../../modules/network" 
-  project_name         = var.project_name
-  vpc_cidr             = var.vpc_cidr
-  public_subnet_cidr   = var.public_subnet_cidr
-  private_subnet_cidr  = var.private_subnet_cidr
-  public_az            = var.public_az
-  private_az           = var.private_az
-  public_route_table_name  = var.public_route_table_name
+  source                  = "../../modules/network"
+  project_name            = var.project_name
+  vpc_cidr                = var.vpc_cidr
+  public_subnet_cidr      = var.public_subnet_cidr
+  private_subnet_cidr     = var.private_subnet_cidr
+  public_az               = var.public_az
+  private_az              = var.private_az
+  public_route_table_name = var.public_route_table_name
   #ami = data.aws_ami.ubuntu.id
   ec2_key_name = var.ec2_key_name
 }

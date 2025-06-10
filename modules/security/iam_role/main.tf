@@ -145,15 +145,15 @@ resource "aws_iam_policy" "describe_ami" { #AMI 조회 권한 부여 - 최신 AM
     ]
   })
 }
-resource "aws_iam_policy" "read_permissions" { 
+resource "aws_iam_policy" "read_permissions" {
   name        = "${var.project_name}-read-ec2-iam"
   description = "Allow EC2/IAM read operations for CodeBuild"
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Effect   = "Allow",
-        Action   = [
+        Effect = "Allow",
+        Action = [
           "ec2:DescribeInstances",
           "ec2:DescribeImages",
           "iam:GetPolicy"
@@ -169,7 +169,7 @@ resource "aws_iam_role_policy_attachment" "read_permissions_attach" {
   policy_arn = aws_iam_policy.read_permissions.arn
 }
 resource "aws_iam_role_policy_attachment" "attach_describe_ami" {
-  role = aws_iam_role.codepipeline_role[0].name
+  role       = aws_iam_role.codepipeline_role[0].name
   policy_arn = aws_iam_policy.describe_ami.arn
 }
 
@@ -181,12 +181,12 @@ resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
 resource "aws_iam_policy" "codepipeline_get_policy_versions" {
   name        = "infra-doyeon-get-policy-version"
   description = "Allow CodePipeline to get IAM policy versions"
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = ["iam:GetPolicy", "iam:GetPolicyVersion"]
+        Effect = "Allow"
+        Action = ["iam:GetPolicy", "iam:GetPolicyVersion"]
         Resource = [
           "arn:aws:iam::866874933972:policy/infra-doyeon-describe-ami",
           "arn:aws:iam::866874933972:policy/infra-doyeon-read-ec2-iam"
