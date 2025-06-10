@@ -1,6 +1,6 @@
 resource "aws_codepipeline" "terraform_pipeline" {
 
-  name     = "${var.project_name}-pipeline"
+  name     = "${var.project_name}-pipe"
   role_arn = var.codepipeline_role_arn
   tags     = var.tags
 
@@ -23,7 +23,7 @@ resource "aws_codepipeline" "terraform_pipeline" {
       version          = "1"
       provider         = "CodeCommit"
       namespace        = "SourceVariables"
-      output_artifacts = ["SourceOutput"]
+      output_artifacts = ["Source"]
       run_order        = 1
 
       configuration = {

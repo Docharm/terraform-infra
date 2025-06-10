@@ -14,7 +14,7 @@ create_new_role     = true
 
 # CodeBuild Steps Configuration
 stage_input = [
-  { name = "validate", category = "Test", owner = "AWS", provider = "CodeBuild", input_artifacts = "SourceOutput", output_artifacts = "Validate" },
+  { name = "validate", category = "Test", owner = "AWS", provider = "CodeBuild", input_artifacts = "Source", output_artifacts = "Validate" },
   { name = "plan", category = "Test", owner = "AWS", provider = "CodeBuild", input_artifacts = "Validate", output_artifacts = "Plan" },
   { name = "apply", category = "Build", owner = "AWS", provider = "CodeBuild", input_artifacts = "Plan", output_artifacts = "Apply" },
   { name = "destroy", category = "Build", owner = "AWS", provider = "CodeBuild", input_artifacts = "Apply", output_artifacts = "Destroy" }
