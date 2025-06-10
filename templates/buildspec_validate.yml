@@ -15,7 +15,7 @@ phases:
       - yum install -y jq awscli
   build:
     commands:
-      - echo "## TERRAFORM VALIDATE START ##"
+      - echo "## TERRAFORM VALIDATE START "
       - cd env/$ENVIRONMENT
       - terraform init -backend=false
       - terraform validate
