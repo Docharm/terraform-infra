@@ -128,6 +128,25 @@ resource "aws_iam_policy" "codepipeline_policy" {
 }
 EOF
 }
+resource "aws_iam_policy" "describe_ami" {
+  name        = "${var.project_name}-describe-ami"
+  description = "Allow DescribeImages to look up AMIs"
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = ["ec2:DescribeImages"],
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "attach_describe_ami" {
+  role = aws_iam_role.codepipeline_role[0].name
+  policy_arn = aws_iam_policy.describe_ami.arn
+}
 
 resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
   count      = var.create_new_role ? 1 : 0
