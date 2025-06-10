@@ -21,7 +21,7 @@ phases:
       - "echo ## TERRAFORM PLAN : Generate the Terraform Plan"
       - "cd env/$ENVIRONMENT"
     #  - "terraform init"
-      - "terraform plan -out=tfapply" 
+      - "terraform plan -out=tfapply || (echo '[ERROR] terraform plan failed' && exit 1)"
 artifacts:
   files:
     - '**/*'

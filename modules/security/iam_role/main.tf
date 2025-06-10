@@ -128,7 +128,9 @@ resource "aws_iam_policy" "codepipeline_policy" {
 }
 EOF
 }
-resource "aws_iam_policy" "describe_ami" {
+
+# 도연iamrole 추가 
+resource "aws_iam_policy" "describe_ami" { #AMI 조회 권한 부여 - 최신 AMI 자동 
   name        = "${var.project_name}-describe-ami"
   description = "Allow DescribeImages to look up AMIs"
   policy = jsonencode({
@@ -142,7 +144,7 @@ resource "aws_iam_policy" "describe_ami" {
     ]
   })
 }
-resource "aws_iam_policy" "read_permissions" {
+resource "aws_iam_policy" "read_permissions" { 
   name        = "${var.project_name}-read-ec2-iam"
   description = "Allow EC2/IAM read operations for CodeBuild"
   policy = jsonencode({
@@ -176,8 +178,7 @@ resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
   policy_arn = aws_iam_policy.codepipeline_policy[0].arn
 }
 
-# 도연iamrole 추가 
-resource "aws_iam_role_policy" "codecommit_inline_update_default_branch" {
+resource "aws_iam_role_policy" "codecommit_inline_update_default_branch" { # 기본 브랜치 업데이트 
   count = var.create_new_role ? 1 : 0
 
   name = "AllowUpdateDefaultBranch"
