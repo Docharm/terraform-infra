@@ -120,7 +120,8 @@ resource "aws_iam_policy" "codepipeline_policy" {
           "ec2:DescribeSecurityGroups",
           "ec2:DescribeNatGateways",
           "ec2:DescribeAvailabilityZones",
-          "ec2:DescribeVpcAttribute"
+          "ec2:DescribeVpcAttribute",
+          "ec2:DescribeInstanceTypes" 
       ],
       "Resource": "*"
     }

@@ -134,7 +134,7 @@ resource "aws_instance" "web" {
 
 # 최신 우분투 AMI 가져오기
 data "aws_ami" "ubuntu" {
-  most_recent = true
+  most_recent = true # 가장 최근
   owners      = ["099720109477"]  # Canonical 공식 계정
 
   filter {
