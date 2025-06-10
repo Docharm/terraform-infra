@@ -177,6 +177,28 @@ resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
   role       = aws_iam_role.codepipeline_role[0].name
   policy_arn = aws_iam_policy.codepipeline_policy[0].arn
 }
+resource "aws_iam_policy" "codepipeline_get_policy_versions" {
+  name        = "infra-doyeon-get-policy-version"
+  description = "Allow CodePipeline to get IAM policy versions"
+  policy      = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = ["iam:GetPolicy", "iam:GetPolicyVersion"]
+        Resource = [
+          "arn:aws:iam::866874933972:policy/infra-doyeon-describe-ami",
+          "arn:aws:iam::866874933972:policy/infra-doyeon-read-ec2-iam"
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "attach_get_policy_version" {
+  role       = aws_iam_role.codepipeline_role[0].name
+  policy_arn = aws_iam_policy.codepipeline_get_policy_versions.arn
+}
 
 resource "aws_iam_role_policy" "codecommit_inline_update_default_branch" { # 기본 브랜치 업데이트 
   count = var.create_new_role ? 1 : 0
