@@ -90,3 +90,35 @@ variable "tags" {
   description = "Tags to be applied to the codebuild project"
   type        = map(any)
 }
+variable "vpc_cidr" { 
+  type = string 
+  }
+
+variable "public_subnet_cidr" {
+  type = string
+}
+
+variable "private_subnet_cidr" {
+  type = string
+}
+
+variable "public_az" {
+  type = string
+}
+
+variable "private_az" {
+  type = string
+}
+
+variable "public_route_table_name" {
+  type    = string
+  default = null
+}
+
+variable "ec2_instance_type" {
+  type = string
+}
+
+variable "ec2_key_name" {
+  type = string
+}

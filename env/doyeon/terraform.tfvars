@@ -29,3 +29,12 @@ tags = {
   Owner   = "doyeon"
   Env     = "dev"
 }
+
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_cidr   = "10.0.1.0/24"
+private_subnet_cidr  = "10.0.2.0/24"
+public_az            = "ap-northeast-2a"
+private_az           = "ap-northeast-2c"
+public_route_table_name = "doyeon-public-rt-main"
+ec2_instance_type = "t3.micro"
+ec2_key_name      = "doyeon-key"            # 도연님이 콘솔에서 만든 키페어 이름
