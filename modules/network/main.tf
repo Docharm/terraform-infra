@@ -111,6 +111,25 @@ resource "aws_instance" "web" {
   tags = {
     Name = "${var.project_name}-web"
   }
+
+    user_data = <<-EOF
+              #!/bin/bash
+              apt update -y
+              apt install -y nginx
+              echo '<!DOCTYPE html>
+              <html lang="ko">
+              <head>
+                <meta charset="UTF-8">
+                <title>Terraform 서버</title>
+              </head>
+              <body>
+                <h1>Terraform으로 만든 EC2 인스턴스!</h1>
+                <p>이 인스턴스는 Nginx로 동작하고 있습니다.</p>
+              </body>
+              </html>' > /var/www/html/index.html
+              systemctl enable nginx
+              systemctl start nginx
+              EOF
 }
 
 # 최신 우분투 AMI 가져오기
@@ -127,4 +146,6 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+
+  
 }
