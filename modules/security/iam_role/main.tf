@@ -172,3 +172,21 @@ resource "aws_iam_role_policy_attachment" "read_permissions_attach" {
   role       = aws_iam_role.codepipeline_role[0].name
   policy_arn = aws_iam_policy.read_permissions.arn
 }
+
+# EC2 태그 조회 권한
+resource "aws_iam_role_policy_attachment" "codepipeline_ec2_describe_tags" {
+  role       = aws_iam_role.codepipeline_role[0].name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+}
+
+# CodePipeline 조회 권한
+resource "aws_iam_role_policy_attachment" "codepipeline_getpipeline" {
+  role       = aws_iam_role.codepipeline_role[0].name
+  policy_arn = "arn:aws:iam::aws:policy/AWSCodePipeline_ReadOnlyAccess"
+}
+
+# IAM 정책 정보 조회 권한 (커스텀 정책 수정 시 필요)
+resource "aws_iam_role_policy_attachment" "codepipeline_iam_getpolicy" {
+  role       = aws_iam_role.codepipeline_role[0].name
+  policy_arn = "arn:aws:iam::aws:policy/IAMReadOnlyAccess"
+}
