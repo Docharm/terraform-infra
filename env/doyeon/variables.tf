@@ -90,6 +90,7 @@ variable "tags" {
   description = "Tags to be applied to the codebuild project"
   type        = map(any)
 }
+
 variable "vpc_cidr" {
   type = string
 }
