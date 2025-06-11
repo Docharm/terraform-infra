@@ -22,9 +22,8 @@ phases:
       - terraform fmt -check || (echo "[ERROR] terraform fmt failed" && exit 1)
 
 artifacts:
-  base-directory: env/${ENVIRONMENT}
   files:
-    - '**/*.tf'
+    - '**/*'
 
 # version: 0.2
 
