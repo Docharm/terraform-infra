@@ -21,12 +21,11 @@ phases:
       - terraform validate || (echo "[ERROR] terraform validate failed" && exit 1)
       - terraform fmt -check || (echo "[ERROR] terraform fmt failed" && exit 1)
 
-
 artifacts:
   base-directory: env/${ENVIRONMENT}
   files:
     - '**/*.tf'
-    
+
 # version: 0.2
 
 # env:
