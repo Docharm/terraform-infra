@@ -11,6 +11,10 @@
 # Optional / debugging
 crash.log
 
+*.pem
+*.key
+.ssh/
+
 # Optional: ignore .terraform.lock.hcl only if you're not locking provider versions
 # (Most teams **include** this file)
 # .terraform.lock.hclmodules/network/doyeon-key.pem
